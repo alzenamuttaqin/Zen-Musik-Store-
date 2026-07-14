@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Musik Online - Zen Musik Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==================== HEADER & NAVIGASI ==================== -->
+    <header>
+        <div class="logo">
+            <img src="Copilot_20260423_124259.png" alt="Logo" style="width: 40px; height: auto;">
+            <h1>Zen Musik Store</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a onclick="bukaHalaman('home')" id="nav-home" class="active">Home</a></li>
+                <li><a onclick="bukaHalaman('produk')" id="nav-produk">Produk</a></li>
+                <li><a onclick="bukaHalaman('kategori')" id="nav-kategori">Kategori</a></li>
+                <li><a onclick="bukaHalaman('keranjang')" id="nav-keranjang">Keranjang (<span id="jumlah-keranjang">0</span>)</a></li>
+                <li id="menu-user"><button id="btn-login-nav" onclick="bukaModalLogin()">Masuk</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ==================== MODAL LOGIN ==================== -->
+    <div id="modal-login" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="tutupModalLogin()">&times;</span>
+            <h2>Masuk</h2>
+            <p class="modal-sub">Gunakan kata sandi: <strong style="color: #ff69b4;">zenmusik</strong></p>
+            
+            <form id="form-login" onsubmit="event.preventDefault(); prosesLogin();">
+                <div class="form-group">
+                    <label for="login-input">Nomor HP atau Email</label>
+                    <input type="text" id="login-input" placeholder="Contoh: user@email.com atau 0812345" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Kata Sandi</label>
+                    <input type="password" id="login-password" placeholder="Masukkan kata sandi Anda" required>
+                </div>
+                <button type="submit" id="btn-submit-login">Masuk</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== 1. HALAMAN HOME ==================== -->
+    <div id="halaman-home" class="halaman-section aktif">
+        <section id="hero">
+            <!-- BANNER SLIDE OTOMATIS BERGULIR SEAMLESS -->
+            <div class="slider-container">
+                <div class="slider-wrapper">
+                    <!-- Set Pertama -->
+                    <img src="·̩͙ •ଓ ໒ 𝐒𝐥𝐚𝐬𝐡 ཻུ۪۪⸙͎ ੭ ♫.jpg" class="slide" alt="Slash">
+                    <img src="Screenshot 2026-07-13 234618.png" class="slide" alt="Qibil">
+                    <img src="Synyster Gates.jpg" class="slide" alt="Synyster Gates">
+                    <img src="slipknot.jpg" class="slide" alt="Slipknot">
+                    <img src="o.jpg" class="slide" alt="Zen Musik">
+                    <img src="da.jpeg" class="slide" alt="Zen Musik">
+                    <!-- Set Kedua (Duplikat persis untuk efek tanpa jeda) -->
+                    <img src="·̩͙ •ଓ ໒ 𝐒𝐥𝐚𝐬𝐡 ཻུ۪۪⸙͎ ੭ ♫.jpg" class="slide" alt="Slash">
+                    <img src="Screenshot 2026-07-13 234618.png" class="slide" alt="Qibil">
+                    <img src="Synyster Gates.jpg" class="slide" alt="Synyster Gates">
+                    <img src="slipknot.jpg" class="slide" alt="Slipknot">
+                    <img src="o.jpg" class="slide" alt="Zen Musik">
+                    <img src="da.jpeg" class="slide" alt="Zen Musik">
+                </div>
+            </div>
+            <div class="hero-text">
+                <h2>Selamat Datang di Zen Musik Store</h2>
+                <p>Temukan alat musik favoritmu dengan harga terbaik!</p>
+                <div class="search-container">
+                    <input type="text" id="search-home" placeholder="Cari nama gitar..." onkeypress="handleSearchHome(event)">
+                    <button onclick="prosesSearchHome()">Cari</button>
+                </div>
+                <button onclick="bukaHalaman('produk')">Belanja Sekarang</button>
+            </div>
+        </section>
+        
+        <div class="info-section">
+            <h3>Pusat Perlengkapan Musik Terbaik</h3>
+            <p>Kami menyediakan berbagai macam gitar elektrik dan akustik dari brand ternama dunia dengan kualitas original dan bergaransi resmi.</p>
+        </div>
+    </div>
+
+    <!-- ==================== 2. HALAMAN PRODUK ==================== -->
+    <div id="halaman-produk" class="halaman-section">
+        <h2>Semua Produk Unggulan</h2>
+        <div class="search-produk-container">
+            <input type="text" id="search-produk" placeholder="Ketik untuk mencari gitar..." onkeyup="filterCariProduk()">
+        </div>
+
+        <div class="produk-list">
+            <!-- 1. Fender Telecaster -->
+            <article class="produk" data-kategori="elektrik">
+                <img src="Fender American Performer Timber Telecaster RW 2-Color Sunburs___.jpg" alt="Fender Telecaster" onclick="bukaModalDetail('Fender Telecaster', 'Rp 4.000.000', 'Fender American Performer Timber Telecaster RW 2-Color Sunburs___.jpg', 'Gitar elektrik legendaris dengan bodi kayu pilihan berkualitas tinggi. Menghasilkan suara twang khas Telecaster yang jernih, renyah, dan sangat cocok untuk genre musik Blues, Rock, dan Pop. Dilengkapi dengan pickup American Performer orisinal.')" style="cursor: pointer;">
+                <h3 onclick="bukaModalDetail('Fender Telecaster', 'Rp 4.000.000', 'Fender American Performer Timber Telecaster RW 2-Color Sunburs___.jpg', 'Gitar elektrik legendaris dengan bodi kayu pilihan berkualitas tinggi. Menghasilkan suara twang khas Telecaster yang jernih, renyah, dan sangat cocok untuk genre musik Blues, Rock, dan Pop. Dilengkapi dengan pickup American Performer orisinal.')" style="cursor: pointer;">Fender Telecaster</h3>
+                <p>Rp 4.000.000</p>
+                <button onclick="tambahKeKeranjang('Fender Telecaster', 'Rp 4.000.000')">Tambah ke Keranjang</button>
+            </article>
+
+            <!-- 2. ESP LTD KH-602 -->
+            <article class="produk" data-kategori="elektrik">
+                <img src="ESP LTD KH-602 Signature Series Kirk Hammett.jpg" alt="ESP LTD" onclick="bukaModalDetail('ESP LTD KH-602 Signature Series', 'Rp 12.000.000', 'ESP LTD KH-602 Signature Series Kirk Hammett.jpg', 'Gitar signature Kirk Hammett dari Metallica. Didesain khusus untuk performa tinggi, distorsi tebal, dan solo cepat. Menggunakan konstruksi neck-thru yang kokoh serta dilengkapi pickup EMG aktif untuk karakter sound metal yang agresif.')" style="cursor: pointer;">
+                <h3 onclick="bukaModalDetail('ESP LTD KH-602 Signature Series', 'Rp 12.000.000', 'ESP LTD KH-602 Signature Series Kirk Hammett.jpg', 'Gitar signature Kirk Hammett dari Metallica. Didesain khusus untuk performa tinggi, distorsi tebal, dan solo cepat. Menggunakan konstruksi neck-thru yang kokoh serta dilengkapi pickup EMG aktif untuk karakter sound metal yang agresif.')" style="cursor: pointer;">ESP LTD KH-602 Signature Series</h3>
+                <p>Rp 12.000.000</p>
+                <button onclick="tambahKeKeranjang('ESP LTD KH-602 Signature Series', 'Rp 12.000.000')">Tambah ke Keranjang</button>
+            </article>
+
+            <!-- 3. Gibson Slash Les Paul -->
+            <article class="produk" data-kategori="elektrik">
+                <img src="Gibson Slash Les Paul Standard Electric Guitar November Burst _ Guitar Center.jpg" alt="Gibson Slash" onclick="bukaModalDetail('Gibson Slash Les Paul', 'Rp 4.500.000', 'Gibson Slash Les Paul Standard Electric Guitar November Burst _ Guitar Center.jpg', 'Koleksi mahakarya dari seri legendaris Slash (Guns N Roses). Menawarkan bodi berbahan mahoni solid dengan warna November Burst yang eksotis. Menghasilkan sustain yang luar biasa panjang dan tone warm khas musik rock klasik.')" style="cursor: pointer;">
+                <h3 onclick="bukaModalDetail('Gibson Slash Les Paul', 'Rp 4.500.000', 'Gibson Slash Les Paul Standard Electric Guitar November Burst _ Guitar Center.jpg', 'Koleksi mahakarya dari seri legendaris Slash (Guns N Roses). Menawarkan bodi berbahan mahoni solid dengan warna November Burst yang eksotis. Menghasilkan sustain yang luar biasa panjang dan tone warm khas musik rock klasik.')" style="cursor: pointer;">Gibson Slash Les Paul</h3>
+                <p>Rp 4.500.000</p>
+                <button onclick="tambahKeKeranjang('Gibson Slash Les Paul', 'Rp 4.500.000')">Tambah ke Keranjang</button>
+            </article>
+
+            <!-- 4. Taylor American Dream -->
+            <article class="produk" data-kategori="akustik">
+                <img src="Taylor American Dream 50th Anniversary Natural.jpg" alt="Taylor American Dream" onclick="bukaModalDetail('Taylor American Dream', 'Rp 7.500.000', 'Taylor American Dream 50th Anniversary Natural.jpg', 'Merupakan gitar akustik edisi spesial 50th Anniversary. Dibuat langsung dengan presisi tinggi menghasilkan proyeksi suara akustik yang sangat jernih, seimbang, dan deep. Pilihan terbaik untuk para musisi fingerstyle profesional.')" style="cursor: pointer;">
+                <h3 onclick="bukaModalDetail('Taylor American Dream', 'Rp 7.500.000', 'Taylor American Dream 50th Anniversary Natural.jpg', 'Merupakan gitar akustik edisi spesial 50th Anniversary. Dibuat langsung dengan presisi tinggi menghasilkan proyeksi suara akustik yang sangat jernih, seimbang, dan deep. Pilihan terbaik untuk para musisi fingerstyle profesional.')" style="cursor: pointer;">Taylor American Dream</h3>
+                <p>Rp 7.500.000</p>
+                <button onclick="tambahKeKeranjang('Taylor American Dream', 'Rp 7.500.000')">Tambah ke Keranjang</button>
+            </article>
+
+            <!-- 5. Jackson JS Series Dinky -->
+            <article class="produk" data-kategori="elektrik">
+                <img src="Jackson JS Series Dinky JS32 DKAP Electric Guitar Transparent Black Burst.jpg" alt="Jackson JS" onclick="bukaModalDetail('Jackson JS Series Dinky', 'Rp 7.000.000', 'Jackson JS Series Dinky JS32 DKAP Electric Guitar Transparent Black Burst.jpg', 'Gitar elektrik dengan desain bodi Dinky yang ramping dan super cepat. Menggunakan finishing Transparent Black Burst yang menawan dan dilengkapi dengan tremolo double-locking untuk kestabilan tuning ekstra saat melakukan teknik bending ekstrem.')" style="cursor: pointer;">
+                <h3 onclick="bukaModalDetail('Jackson JS Series Dinky', 'Rp 7.000.000', 'Jackson JS Series Dinky JS32 DKAP Electric Guitar Transparent Black Burst.jpg', 'Gitar elektrik dengan desain bodi Dinky yang ramping dan super cepat. Menggunakan finishing Transparent Black Burst yang menawan dan dilengkapi dengan tremolo double-locking untuk kestabilan tuning ekstra saat melakukan teknik bending ekstrem.')" style="cursor: pointer;">Jackson JS Series Dinky</h3>
+                <p>Rp 7.000.000</p>
+                <button onclick="tambahKeKeranjang('Jackson JS Series Dinky', 'Rp 7.000.000')">Tambah ke Keranjang</button>
+            </article>
+
+            <!-- 6. Fender Jazz Master -->
+            <article class="produk" data-kategori="elektrik">
+                <img src="1959 Fender Jazzmaster in excellent condition Sunburst.jpg" alt="Fender Jazz Master" onclick="bukaModalDetail('Fender Jazz Master', 'Rp 8.000.000', '1959 Fender Jazzmaster in excellent condition Sunburst.jpg', 'Replika vintage klasik 1959 dengan warna Sunburst ikonik. Memiliki sistem sirkuit kontrol ritme ganda yang unik, memberikan karakter suara indie rock dan alternative yang sangat berkarakter, hangat, dan kaya akan sejarah musik.')" style="cursor: pointer;">
+                <h3 onclick="bukaModalDetail('Fender Jazz Master', 'Rp 8.000.000', '1959 Fender Jazzmaster in excellent condition Sunburst.jpg', 'Replika vintage klasik 1959 dengan warna Sunburst ikonik. Memiliki sistem sirkuit kontrol ritme ganda yang unik, memberikan karakter suara indie rock dan alternative yang sangat berkarakter, hangat, dan kaya akan sejarah musik.')" style="cursor: pointer;">Fender Jazz Master</h3>
+                <p>Rp 8.000.000</p>
+                <button onclick="tambahKeKeranjang('Fender Jazz Master', 'Rp 8.000.000')">Tambah ke Keranjang</button>
+            </article>
+
+            <!-- 7. Gibson SG -->
+            <article class="produk" data-kategori="elektrik">
+                <img src="2025 Gibson Custom Shop 1961 Les Paul SG Standard Reissue Stop Bar VOS Cherry Red.jpg" alt="Gibson SG" onclick="bukaModalDetail('Gibson SG', 'Rp 9.000.000', '2025 Gibson Custom Shop 1961 Les Paul SG Standard Reissue Stop Bar VOS Cherry Red.jpg', 'Reissue premium edisi 1961 Custom Shop dengan balutan warna Cherry Red yang memikat. Desain double-cutaway yang ikonik memberikan akses mudah ke fret tinggi. Suara mid-range yang padat, sangat ideal untuk hard rock dan blues.')" style="cursor: pointer;">
+                <h3 onclick="bukaModalDetail('Gibson SG', 'Rp 9.000.000', '2025 Gibson Custom Shop 1961 Les Paul SG Standard Reissue Stop Bar VOS Cherry Red.jpg', 'Reissue premium edisi 1961 Custom Shop dengan balutan warna Cherry Red yang memikat. Desain double-cutaway yang ikonik memberikan akses mudah ke fret tinggi. Suara mid-range yang padat, sangat ideal untuk hard rock dan blues.')" style="cursor: pointer;">Gibson SG</h3>
+                <p>Rp 9.000.000</p>
+                <button onclick="tambahKeKeranjang('Gibson SG', 'Rp 9.000.000')">Tambah ke Keranjang</button>
+            </article>
+
+            <!-- 8. Akustik Martin -->
+            <article class="produk" data-kategori="akustik">
+                <img src="download (1).jpg" alt="Akustik Martin" onclick="bukaModalDetail('Akustik Martin', 'Rp 10.000.000', 'download (1).jpg', 'Gitar akustik premium standar dunia dari Martin Guitars. Dibuat dengan material kayu solid pilihan untuk menghasilkan suara akustik alami yang sangat resonant, warm, serta proyeksi suara yang megah saat dimainkan di panggung.')" style="cursor: pointer;">
+                <h3 onclick="bukaModalDetail('Akustik Martin', 'Rp 10.000.000', 'download (1).jpg', 'Gitar akustik premium standar dunia dari Martin Guitars. Dibuat dengan material kayu solid pilihan untuk menghasilkan suara akustik alami yang sangat resonant, warm, serta proyeksi suara yang megah saat dimainkan di panggung.')" style="cursor: pointer;">Akustik Martin</h3>
+                <p>Rp 10.000.000</p>
+                <button onclick="tambahKeKeranjang('Akustik Martin', 'Rp 10.000.000')">Tambah ke Keranjang</button>
+            </article>
+
+            <!-- 9. Ibanez BTB7E Electric Bass -->
+            <article class="produk" data-kategori="bass">
+                <img src="Ibanez BTB7E Electric Bass, 7-String .jpg" alt="Ibanez Bass" onclick="bukaModalDetail('Ibanez BTB7E Electric Bass', 'Rp 8.500.000', 'Ibanez BTB7E Electric Bass, 7-String .jpg', 'Gitar bass elektrik 7-string profesional untuk eksplorasi nada rendah tanpa batas. Memiliki konstruksi neck-through yang kokoh, equalizer 3-band aktif, dan bodi estetik. Paket penjualan sudah termasuk hardcase eksklusif.')" style="cursor: pointer;">
+                <h3 onclick="bukaModalDetail('Ibanez BTB7E Electric Bass', 'Rp 8.500.000', 'Ibanez BTB7E Electric Bass, 7-String .jpg', 'Gitar bass elektrik 7-string profesional untuk eksplorasi nada rendah tanpa batas. Memiliki konstruksi neck-through yang kokoh, equalizer 3-band aktif, dan bodi estetik. Paket penjualan sudah termasuk hardcase eksklusif.')" style="cursor: pointer;">Ibanez BTB7E Electric Bass</h3>
+                <p>Rp 8.500.000</p>
+                <button onclick="tambahKeKeranjang('Ibanez BTB7E Electric Bass', 'Rp 8.500.000')">Tambah ke Keranjang</button>
+            </article>
+
+            <!-- 10. Amplifier Marshall -->
+            <article class="produk" data-kategori="amplifier">
+                <img src="download 2.jpg" alt="Amplifier Marshall" onclick="bukaModalDetail('Amplifier Marshall', 'Rp 15.000.000', 'download 2.jpg', 'Amplifier gitar bertenaga besar dari brand legendaris Marshall. Menghasilkan karakter suara tabung murni yang renyah and distorsi crunch yang melegenda. Sangat bertenaga untuk kebutuhan latihan studio maupun performa panggung besar.')" style="cursor: pointer;">
+                <h3 onclick="bukaModalDetail('Amplifier Marshall', 'Rp 15.000.000', 'download 2.jpg', 'Amplifier gitar bertenaga besar dari brand legendaris Marshall. Menghasilkan karakter suara tabung murni yang renyah and distorsi crunch yang melegenda. Sangat bertenaga untuk kebutuhan latihan studio maupun performa panggung besar.')" style="cursor: pointer;">Amplifier Marshall</h3>
+                <p>Rp 15.000.000</p>
+                <button onclick="tambahKeKeranjang('Amplifier Marshall', 'Rp 15.000.000')">Tambah ke Keranjang</button>
+            </article>
+        </div>
+    </div> 
+
+    <!-- ==================== 3. HALAMAN KATEGORI ==================== -->
+    <div id="halaman-kategori" class="halaman-section">
+        <h2>Kategori Pilihan</h2>
+        <div class="produk-list">
+            <article class="produk">
+                <h3>Gitar Elektrik</h3>
+                <p>Koleksi distorsi tajam & rock n roll</p>
+                <button onclick="filterKategori('elektrik')">Lihat Koleksi</button>
+            </article>
+            <article class="produk">
+                <h3>Gitar Akustik</h3>
+                <p>Suara jernih, alami & melodis</p>
+                <button onclick="filterKategori('akustik')">Lihat Koleksi</button>
+            </article>
+            <article class="produk">
+                <h3>Gitar Bass</h3>
+                <p>Dentuman nada rendah presisi</p>
+                <button onclick="filterKategori('bass')">Lihat Koleksi</button>
+            </article>
+             <article class="produk">
+                <h3>Amplifier</h3>
+                <p>Suara jernih anti noise</p>
+                <button onclick="filterKategori('amplifier')">Lihat Koleksi</button>
+            </article>
+        </div>
+    </div>
+
+    <!-- ==================== 4. HALAMAN KERANJANG ==================== -->
+    <div id="halaman-keranjang" class="halaman-section">
+        <h2>Keranjang Belanja Anda</h2>
+        <ul id="daftar-keranjang"></ul>
+        <button id="checkoutBtn" onclick="menujuHalamanCheckout()">Proses Checkout</button>
+    </div>
+
+    <!-- ==================== 5. HALAMAN CHECKOUT ==================== -->
+    <div id="halaman-checkout" class="halaman-section">
+        <h2>Formulir & Ringkasan Checkout</h2>
+        <div class="checkout-container">
+            <div class="checkout-box">
+                <h3>Ringkasan Belanja</h3>
+                <ul id="ringkasan-checkout"></ul>
+            </div>
+            <div class="checkout-box">
+                <h3>Data Pengiriman & Pembayaran</h3>
+                <form id="form-checkout" onsubmit="event.preventDefault(); selesaikanPembayaran();">
+                    <div class="form-group">
+                        <label for="nama">Nama Lengkap</label>
+                        <input type="text" id="nama" placeholder="Masukkan nama lengkap Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="alamat">Alamat Lengkap</label>
+                        <textarea id="alamat" rows="3" placeholder="Masukkan alamat pengiriman rumah Anda" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="wa">Nomor HP (WhatsApp)</label>
+                        <input type="tel" id="wa" placeholder="Contoh: 08123456789" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="metode-pembayaran">Metode Pembayaran</label>
+                        <select id="metode-pembayaran" onchange="cekMetodePembayaran()" required>
+                            <option value="" disabled selected>-- Pilih Metode Pembayaran --</option>
+                            <option value="COD">COD (Bayar di Tempat)</option>
+                            <option value="Transfer Bank">Transfer Bank</option>
+                            <option value="QRIS">QRIS</option>
+                            <option value="E-Wallet">E-Wallet (OVO / GoPay / Dana)</option>
+                        </select>
+                    </div>
+                    <div id="qris-container" class="qris-box-hidden">
+                        <p class="qris-title">Silakan Scan QRIS di Bawah Ini:</p>
+                        <img src="WhatsApp Image 2026-07-13 at 13.49.42.jpeg" alt="QRIS Zen Musik Store" class="img-qris-pay">
+                    </div>
+                    <button type="submit" id="selesaiBayarBtn">Konfirmasi & Bayar Sekarang</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== MODAL DETAIL PRODUK ==================== -->
+    <div id="modal-detail" class="modal">
+        <div class="modal-content" style="max-width: 420px; width: 90%; padding: 20px;">
+            <span class="close-modal" onclick="tutupModalDetail()">&times;</span>
+            <div style="text-align: center; margin-bottom: 15px;">
+                <img id="detail-img" src="" alt="Detail Produk" style="max-width: 100%; max-height: 250px; object-fit: contain; border-radius: 8px;">
+            </div>
+            <h2 id="detail-nama" style="color: #ff69b4; margin-bottom: 8px; font-size: 1.5em;"></h2>
+            <p id="detail-harga" style="font-weight: bold; font-size: 1.2em; color: #fff; margin-bottom: 12px;"></p>
+            <div style="border-top: 1px solid #333; padding-top: 12px; margin-bottom: 15px;">
+                <h4 style="color: #ccc; margin-bottom: 5px; font-size: 0.95em;">Deskripsi Produk:</h4>
+                <p id="detail-deskripsi" style="color: #aaa; text-align: justify; font-size: 0.88em; line-height: 1.5;"></p>
+            </div>
+            <div id="detail-action-container">
+                <!-- Tombol dinamis disisipkan via JS -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Zen Musik Store. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
